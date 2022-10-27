@@ -4,7 +4,7 @@ class urinalsTest {
 
     @org.junit.jupiter.api.Test
     void goodString() {
-        assertEquals(true, urinals.goodString("abcdef"));
+        assertEquals(true, urinals.goodString("1000010"));
         System.out.println("====== Swetha Ganapathy == TEST ONE EXECUTED =======");
     }
 }
