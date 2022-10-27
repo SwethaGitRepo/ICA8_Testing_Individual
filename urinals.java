@@ -1,12 +1,30 @@
 //Author - Swetha Ganapathy
+import java.io.BufferedWriter;
 import java.util.Scanner;
 
 public class urinals {
-    public static void main(String[] args){
-        Scanner sc=new Scanner(System.in);
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        sc.nextLine();
         if(goodString(String.valueOf(sc))) {
             System.out.println("Valid String");
+            int count = maxNumOfFreeUrinals(String.valueOf(sc));
         }
+    }
+
+    public static Integer maxNumOfFreeUrinals(String str){
+        int count =0;
+        if(goodString(str)) {
+            for (int i = 1; i < str.length() - 1; i++) {
+                if (str.charAt(i - 1) == '0' && str.charAt(i) == '0' && str.charAt(i + 1) == '0') {
+                    count++;
+                }
+            }
+        }
+        else {
+            return -1;
+        }
+    return count;
     }
 
     public static Boolean goodString(String str)
