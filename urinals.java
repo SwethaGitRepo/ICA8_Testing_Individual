@@ -1,23 +1,45 @@
 //Author - Swetha Ganapathy
 import java.io.BufferedWriter;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class urinals {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        sc.nextLine();
-        if(goodString(String.valueOf(sc))) {
+        System.out.println("Enter a new string");
+        String str = String.valueOf(sc.nextLine());
+        if(goodString(str)) {
             System.out.println("Valid String");
-            int count = maxNumOfFreeUrinals(String.valueOf(sc));
+            int count = maxNumOfFreeUrinals(str);
+            System.out.println("Number of free urinals :" + count);
+        }
+        else {
+            System.out.println("Invalid String");
         }
     }
 
     public static Integer maxNumOfFreeUrinals(String str){
         int count =0;
         if(goodString(str)) {
-            for (int i = 1; i < str.length() - 1; i++) {
-                if (str.charAt(i - 1) == '0' && str.charAt(i) == '0' && str.charAt(i + 1) == '0') {
+            char[] strArray = str.toCharArray();
+            for (int i = 0; i < str.length() - 1; i++) {
+                if(i==0)
+                {
+                    if(strArray[i] == '0' && strArray[i+1] == '0')
+                    {
+                        count++;
+                    }
+                }
+                else if(i == str.length()-1)
+                {
+                    if(strArray[i] == '0' && strArray[i-1] == '0')
+                    {
+                        count++;
+                    }
+                }
+                else if (strArray[i - 1] == '0' && strArray[i] == '0' && strArray[i + 1] == '0') {
                     count++;
+                    strArray[i] = '1';
                 }
             }
         }
@@ -31,11 +53,12 @@ public class urinals {
     {
         // checks to see if valid string
         int len = str.length();
+        char[] strArray = str.toCharArray();
         for(int i=0; i<len; i++) {
-            if (str.charAt(i) != '0' && str.charAt(i) != '1') {
+            if (strArray[i] != '0' && strArray[i] != '1') {
                 return false;
             }
-            if(i < len-1 && str.charAt(i) == str.charAt(i+1) && str.charAt(i) == '1')
+            if(i < len-1 && strArray[i] == strArray[i+1] && strArray[i] == '1')
             {
                 return false;
             }
