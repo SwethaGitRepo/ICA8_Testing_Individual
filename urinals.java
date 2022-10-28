@@ -4,9 +4,9 @@ import java.util.Scanner;
 
 public class urinals {
     public static void main(String[] args) throws Exception {
-        System.out.println("Enter your choice : 1.Keyboard Input 2.File Input");
-        Scanner sc = new Scanner(System.in);
-        String choice = sc.nextLine();
+        //get input choice from user - 1.keyboard input 2.File input
+        String choice = getChoice();
+        validateChoice(choice);
         if(choice.equals("1"))
         {
             System.out.println("Enter the string");
@@ -21,6 +21,22 @@ public class urinals {
         }
     }
 
+    public static String getChoice()
+    {
+        System.out.println("Enter your choice : ");
+        System.out.println("1.Keyboard Input 2.File Input");
+        Scanner sc = new Scanner(System.in);
+        return sc.nextLine();
+    }
+
+    public static Boolean validateChoice(String choice)
+    {
+        if(choice != "1" && choice != "2")
+        {
+            return false;
+        }
+        return true;
+    }
     public static void readFileAndFindMaxNumOfFreeUrinals() throws Exception {
         BufferedReader inputFile;
         inputFile = new BufferedReader(new FileReader("urinal.dat"));
@@ -47,7 +63,7 @@ public class urinals {
     }
     public static Integer findMaxNumOfFreeUrinals(String str)
     {
-        int count = 0;
+        int count;
         if(goodString(str)) {
             count = maxNumOfFreeUrinals(str);
             System.out.println("Number of free urinals :" + count);

@@ -23,4 +23,10 @@ class urinalsTest {
     }
 
 
+    @Test
+    void validateChoice() {
+        assertEquals(true, urinals.validateChoice("1"));
+        assertEquals(false, urinals.validateChoice("3"));
+        System.out.println("====== Swetha Ganapathy == TEST THREE EXECUTED =======");
+    }
 }
