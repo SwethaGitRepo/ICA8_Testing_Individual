@@ -21,4 +21,6 @@ class urinalsTest {
         assertEquals(-1, urinals.maxNumOfFreeUrinals("011"));
         System.out.println("====== Swetha Ganapathy == TEST TWO EXECUTED =======");
     }
+
+
 }
